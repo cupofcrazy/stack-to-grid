@@ -19,6 +19,8 @@ footer {
   backdrop-filter: blur(10px);
   font-size: .8rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  min-width: 240px;
+  text-align: center;
 
   p {
     color: #111;

@@ -67,9 +67,8 @@ onMounted(() => {
 
 .grid-item-image {
   width: 100%;
+  height: 100%;
   border-radius: 1rem;
-  order: -1;
-  /* overflow-x: hidden; */
 }
 
 img {
