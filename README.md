@@ -1,8 +1,11 @@
-# Nuxt 3 Minimal Starter
+# Stack To Grid Gallery Transition Demo
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+See Demo: [Live](https://stack-to-grid.vercel.app) to learn more.
 
 ## Setup
+
+Requirements
+Add UNSPLASH_ACCESS_KEY to .env
 
 Make sure to install the dependencies:
 

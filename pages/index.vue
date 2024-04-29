@@ -9,6 +9,10 @@
 
     </div>
     <Grid v-if="selectedCollection" :collection="selectedCollection" @click="handleChange(selectedCollection.id)" />
+    <div class="footer-container">
+      <Footer />
+    </div>
+
   </div>
 </template>
 
@@ -21,12 +25,10 @@ gsap.registerPlugin(Flip);
 const baseURL = 'https://api.unsplash.com'
 const { data: collections } = await useAsyncData<any>('collections', async () => {
   const cols = await Promise.all([
-    $fetch(`${baseURL}/collections/1971015/photos?client_id=${process.env.UNSPLASH_ACCESS_KEY}`),
-    $fetch(`${baseURL}/collections/8337454/photos?client_id=${process.env.UNSPLASH_ACCESS_KEY}`),
-    $fetch(`${baseURL}/collections/WM2WLKriadU/photos?client_id=${process.env.UNSPLASH_ACCESS_KEY}`),
-    $fetch(`${baseURL}/collections/1961725/photos?client_id=${process.env.UNSPLASH_ACCESS_KEY}`),
-    $fetch(`${baseURL}/collections/3485552/photos?client_id=${process.env.UNSPLASH_ACCESS_KEY}`),
-    $fetch(`${baseURL}/collections/1755999/photos?client_id=${process.env.UNSPLASH_ACCESS_KEY}`),
+    $fetch(`${baseURL}/collections/8337454/photos?per_page=6&client_id=${process.env.UNSPLASH_ACCESS_KEY}`),
+    $fetch(`${baseURL}/collections/WM2WLKriadU/photos?per_page=4&client_id=${process.env.UNSPLASH_ACCESS_KEY}`),
+    $fetch(`${baseURL}/collections/3485552/photos?per_page=5&client_id=${process.env.UNSPLASH_ACCESS_KEY}`),
+    $fetch(`${baseURL}/collections/1755999/photos?per_page=6&client_id=${process.env.UNSPLASH_ACCESS_KEY}`),
 
   ])
   console.log({ cols })
@@ -45,7 +47,6 @@ const filteredCollections = computed(() => collections.value.data.reduce((acc: a
 }, []))
 
 const selectedCollection = ref<any>(null)
-
 const handleClick = (collection: any) => {
   selectedCollection.value = collection
   const state = Flip.getState('.stack-item-image, .grid-item-image')
@@ -100,7 +101,7 @@ const handleChange = (index: number) => {
 
 .gallery {
   --width: 960px;
-  padding: 1rem;
+  padding: 1rem 1rem 5rem 1rem;
   max-width: var(--width);
   margin: 0 auto;
   user-select: none;
@@ -140,5 +141,13 @@ const handleChange = (index: number) => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
   gap: 1rem;
+}
+
+.footer-container {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
 }
 </style>

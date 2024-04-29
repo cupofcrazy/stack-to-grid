@@ -36,7 +36,7 @@ onMounted(() => {
   text-align: center;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100000;
 }
 
 .container {
@@ -48,7 +48,7 @@ onMounted(() => {
   bottom: 0;
   width: 100%;
   height: 100%;
-  padding: var(--spacing);
+  padding: var(--spacing) var(--spacing) 5rem var(--spacing);
   overflow-y: auto;
   background: #fff;
   margin: 0 auto;
